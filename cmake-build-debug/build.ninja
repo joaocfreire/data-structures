@@ -49,29 +49,29 @@ cmake_ninja_workdir = C$:/Users/Joao/CLionProjects/DataStructures/cmake-build-de
 
 build cmake_object_order_depends_target_DataStructures: phony || CMakeFiles/DataStructures.dir
 
-build CMakeFiles/DataStructures.dir/main.c.obj: C_COMPILER__DataStructures_unscanned_Debug C$:/Users/Joao/CLionProjects/DataStructures/main.c || cmake_object_order_depends_target_DataStructures
-  DEP_FILE = CMakeFiles\DataStructures.dir\main.c.obj.d
+build CMakeFiles/DataStructures.dir/lista2.c.obj: C_COMPILER__DataStructures_unscanned_Debug C$:/Users/Joao/CLionProjects/DataStructures/lista2.c || cmake_object_order_depends_target_DataStructures
+  DEP_FILE = CMakeFiles\DataStructures.dir\lista2.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\DataStructures.dir
   OBJECT_FILE_DIR = CMakeFiles\DataStructures.dir
 
-build CMakeFiles/DataStructures.dir/implementations/BinaryTree.c.obj: C_COMPILER__DataStructures_unscanned_Debug C$:/Users/Joao/CLionProjects/DataStructures/implementations/BinaryTree.c || cmake_object_order_depends_target_DataStructures
-  DEP_FILE = CMakeFiles\DataStructures.dir\implementations\BinaryTree.c.obj.d
+build CMakeFiles/DataStructures.dir/libraries/BinaryTree.c.obj: C_COMPILER__DataStructures_unscanned_Debug C$:/Users/Joao/CLionProjects/DataStructures/libraries/BinaryTree.c || cmake_object_order_depends_target_DataStructures
+  DEP_FILE = CMakeFiles\DataStructures.dir\libraries\BinaryTree.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\DataStructures.dir
-  OBJECT_FILE_DIR = CMakeFiles\DataStructures.dir\implementations
+  OBJECT_FILE_DIR = CMakeFiles\DataStructures.dir\libraries
 
-build CMakeFiles/DataStructures.dir/implementations/Stack.c.obj: C_COMPILER__DataStructures_unscanned_Debug C$:/Users/Joao/CLionProjects/DataStructures/implementations/Stack.c || cmake_object_order_depends_target_DataStructures
-  DEP_FILE = CMakeFiles\DataStructures.dir\implementations\Stack.c.obj.d
+build CMakeFiles/DataStructures.dir/libraries/Stack.c.obj: C_COMPILER__DataStructures_unscanned_Debug C$:/Users/Joao/CLionProjects/DataStructures/libraries/Stack.c || cmake_object_order_depends_target_DataStructures
+  DEP_FILE = CMakeFiles\DataStructures.dir\libraries\Stack.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\DataStructures.dir
-  OBJECT_FILE_DIR = CMakeFiles\DataStructures.dir\implementations
+  OBJECT_FILE_DIR = CMakeFiles\DataStructures.dir\libraries
 
-build CMakeFiles/DataStructures.dir/implementations/Queue.c.obj: C_COMPILER__DataStructures_unscanned_Debug C$:/Users/Joao/CLionProjects/DataStructures/implementations/Queue.c || cmake_object_order_depends_target_DataStructures
-  DEP_FILE = CMakeFiles\DataStructures.dir\implementations\Queue.c.obj.d
+build CMakeFiles/DataStructures.dir/libraries/Queue.c.obj: C_COMPILER__DataStructures_unscanned_Debug C$:/Users/Joao/CLionProjects/DataStructures/libraries/Queue.c || cmake_object_order_depends_target_DataStructures
+  DEP_FILE = CMakeFiles\DataStructures.dir\libraries\Queue.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\DataStructures.dir
-  OBJECT_FILE_DIR = CMakeFiles\DataStructures.dir\implementations
+  OBJECT_FILE_DIR = CMakeFiles\DataStructures.dir\libraries
 
 
 # =============================================================================
@@ -81,7 +81,7 @@ build CMakeFiles/DataStructures.dir/implementations/Queue.c.obj: C_COMPILER__Dat
 #############################################
 # Link the executable DataStructures.exe
 
-build DataStructures.exe: C_EXECUTABLE_LINKER__DataStructures_Debug CMakeFiles/DataStructures.dir/main.c.obj CMakeFiles/DataStructures.dir/implementations/BinaryTree.c.obj CMakeFiles/DataStructures.dir/implementations/Stack.c.obj CMakeFiles/DataStructures.dir/implementations/Queue.c.obj
+build DataStructures.exe: C_EXECUTABLE_LINKER__DataStructures_Debug CMakeFiles/DataStructures.dir/lista2.c.obj CMakeFiles/DataStructures.dir/libraries/BinaryTree.c.obj CMakeFiles/DataStructures.dir/libraries/Stack.c.obj CMakeFiles/DataStructures.dir/libraries/Queue.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\DataStructures.dir

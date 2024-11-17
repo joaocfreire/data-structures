@@ -1,8 +1,9 @@
 #include <string.h>
 #include <stdbool.h>
-#include "libraries/headers/BinaryTree.h"
+#include <math.h>
 #include "libraries/headers/Stack.h"
 #include "libraries/headers/Queue.h"
+#include "libraries/headers/BinaryTree.h"
 
 // ---------------------------- LISTA 2 ------------------------------- //
 
@@ -162,6 +163,89 @@ void liberaEmPreOrdem(TreeNode* root) {
     }
 }
 
+/*
+ * 6) Escreva uma função que determine se uma árvore binária é cheia ou não.
+ */
+
+int total(TreeNode* root) {
+    if (root == NULL) return 0;
+    return total(root->left) + total(root->right) + 1;
+}
+
+bool binariaCheia(TreeNode* root) {
+    if (root == NULL) return true;
+    int height = heightTree(root);
+    int n = total(root);
+    if (pow(2, height) - 1 == n) return true;
+    return false;
+}
+
+/*
+ * 7) Escreva uma função que cria uma imagem espelho de uma árvore binária,
+ * isto é, todos os filhos à esquerda tornam-se filhos à direita, e vice-versa.
+ */
+
+TreeNode* espelho(TreeNode* root) {
+    if (root == NULL) return root;
+    TreeNode* aux = root->left;
+    root->left = root->right;
+    root->right = aux;
+    espelho(root->left);
+    espelho(root->right);
+    return root;
+}
+
+/* 8) Escreva uma função que retorna o maior nó de uma árvore binária.
+ */
+
+TreeNode* maiorNo(TreeNode* root) {
+    if (root == NULL) return NULL;
+    TreeNode* maiorEsquerda = maiorNo(root->left);
+    TreeNode* maiorDireita = maiorNo(root->right);
+    TreeNode* maior = root;
+    if (maiorEsquerda != NULL && maiorEsquerda->data > maior->data) {
+        maior = maiorEsquerda;
+    }
+    if (maiorDireita != NULL && maiorDireita->data > maior->data) {
+        maior = maiorDireita;
+    }
+    return maior;
+}
+
+/* 9) Escreva uma função que retire os nós pares de uma árvore binária.
+ */
+
+TreeNode* retiraPares(TreeNode* root) {
+    if (root == NULL) return root; // árvore vazia
+    root->left = retiraPares(root->left);
+    root->right = retiraPares(root->right);
+    if (root->data % 2 == 0) { // nó par
+        if (root->left == NULL && root->right == NULL) { // Caso 1: nó folha
+            free(root);
+            root = NULL;
+        }
+        else if (root->left == NULL || root->right == NULL) { // Caso 2: nó com um filho
+            TreeNode* aux = root;
+            if (root->left) root = root->left;
+            else root = root->right;
+            free(aux);
+        }
+        else { // Caso 3: nó com 2 filhos
+            TreeNode* substituto = root->right;
+            TreeNode* paiSubstituto = root;
+            while (substituto->left) {
+                paiSubstituto = substituto;
+                substituto = substituto->left;
+            }
+            root->data = substituto->data;
+            if (paiSubstituto->left == substituto) paiSubstituto->left = substituto->right;
+            else paiSubstituto->right = substituto->right;
+            free(substituto);
+        }
+    }
+    return root;
+}
+
 
 // Função que constrói uma árvore a partir de inputs do usuário
 TreeNode* buildTree() {
@@ -173,20 +257,19 @@ TreeNode* buildTree() {
 
     do {
         char s2[2];
-        printf("\nQuer continuar inserindo nos na arvore (S/N)?");
+        printf("\nQuer continuar inserindo nos na arvore (s/n)?");
         scanf("%s", &flag);
-        if (flag == 'N') break;
-        printf("\nDigite o pai (que deve existir), o filho a ser inserido na arvore e a posicao (E/D):");
+        if (flag == 'n') break;
+        printf("\nDigite o pai (que deve existir), o filho a ser inserido na arvore e a posicao (e/d):");
         scanf("%d %d %s", &root, &node, s2);
         s1 = searchTreeNode(a, root);
         if (s1 == NULL) break;
-        if (strcmp(s2, "E") == 0) s1->left = createTreeNode(node, NULL, NULL);
+        if (strcmp(s2, "e") == 0) s1->left = createTreeNode(node, NULL, NULL);
         else s1->right = createTreeNode(node, NULL, NULL);
     } while(1);
 
     return a;
 }
-
 
 // Programa Principal
 int main(){
@@ -207,7 +290,11 @@ int main(){
 
     s = ziqueZague(tree);
     if (s) printf("A arvore eh zique-zague\n");
-    else printf("A arvore nao eh zique-zague\n\n");
+    else printf("A arvore nao eh zique-zague\n");
+
+    s = binariaCheia(tree);
+    if (s) printf("A arvore eh binaria cheia\n\n");
+    else printf("A arvore nao eh binaria cheia\n\n");
 
     printf("Folhas da arvore: ");
     imprimeFolhas(tree);
@@ -218,7 +305,20 @@ int main(){
     buscaLarguraComFila(tree);
     printf("\n\nBusca em Pos-Ordem: ");
     buscaPosOrdemComPilha(tree);
-    printf("\n");
+    printf("\n\n");
+
+    printf("Espelho da arvore:\n\n");
+    tree = espelho(tree);
+    printTree(tree, 0);
+    printf("\n\n");
+
+    TreeNode* maior = maiorNo(tree);
+    if (maior != NULL) printf("Maior no da arvore: %d\n\n", maior->data);
+    else printf("Arvore vazia\n\n");
+
+    tree = retiraPares(tree);
+    printTree(tree, 0);
+    printf("\n\n");
 
     //liberaEmPosOrdem(tree);
     //liberaEmPreOrdem(tree);
