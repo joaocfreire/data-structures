@@ -1,17 +1,11 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdbool.h>
-
-typedef struct stackNode {
-    int data;
-    struct stackNode* next;
-} StackNode;
+#include "LinkedList.h"
 
 typedef struct stack {
-    StackNode* top;
+    Node* top;
     int count;
 } Stack;
 

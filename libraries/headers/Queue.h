@@ -1,18 +1,12 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdbool.h>
-
-typedef struct queueNode {
-    int data;
-    struct queueNode* next;
-} QueueNode;
+#include "LinkedList.h"
 
 typedef struct queue {
-    QueueNode* first;
-    QueueNode* last;
+    Node* first;
+    Node* last;
     int count;
 } Queue;
 

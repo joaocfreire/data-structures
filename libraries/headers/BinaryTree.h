@@ -13,10 +13,11 @@ typedef struct treeNode {
 TreeNode* initTree();
 TreeNode* createTreeNode(int root, TreeNode* left, TreeNode* right);
 TreeNode* searchTreeNode(TreeNode* root, int data);
-void preorderTraversal(TreeNode* root);
-void postorderTraversal(TreeNode* root);
-void inorderTraversal(TreeNode* root);
+void preOrderTraversal(TreeNode* root);
+void postOrderTraversal(TreeNode* root);
+void inOrderTraversal(TreeNode* root);
 int heightTree(TreeNode *root);
+int totalTreeNode(TreeNode* root);
 void printTree(TreeNode* root, int tab);
 void freeTree(TreeNode* root);
 

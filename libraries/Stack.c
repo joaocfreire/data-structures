@@ -8,7 +8,7 @@ Stack* createStack() {
 }
 
 void push(Stack* s, int x) {
-    StackNode* newNode = (StackNode*) malloc(sizeof(StackNode));
+    Node* newNode = (Node*) malloc(sizeof(Node));
     newNode->data = x;
     newNode->next = s->top;
     s->top = newNode;
@@ -17,7 +17,7 @@ void push(Stack* s, int x) {
 
 void pop(Stack* s, int* x) {
     if (!stackEmpty(s)) {
-        StackNode* aux = s->top;
+        Node* aux = s->top;
         *x = s->top->data;
         s->top = s->top->next;
         s->count--;
@@ -38,7 +38,7 @@ bool stackEmpty(Stack* s) {
 
 void freeStack(Stack* s) {
     while (!stackEmpty(s)) {
-        StackNode *aux = s->top;
+        Node *aux = s->top;
         s->top = s->top->next;
         free(aux);
     }
@@ -48,7 +48,7 @@ void freeStack(Stack* s) {
 void printStack(Stack* s) {
     if (!stackEmpty(s)) {
         printf("Quantidade de elementos na pilha: %d\n\n", s->count);
-        StackNode* aux = s->top;
+        Node* aux = s->top;
         while (aux) {
             printf("%d", aux->data);
             if (aux->next) printf(" -> ");

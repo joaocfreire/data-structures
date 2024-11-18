@@ -9,7 +9,7 @@ Queue* createQueue() {
 }
 
 void enqueue(Queue* q, int x) {
-    QueueNode* newNode = (QueueNode*) malloc(sizeof(QueueNode));
+    Node* newNode = (Node*) malloc(sizeof(Node));
     newNode->data = x;
     newNode->next = NULL;
     if (queueEmpty(q)) q->first = newNode;
@@ -21,7 +21,7 @@ void enqueue(Queue* q, int x) {
 void dequeue(Queue* q, int* x) {
     if (!queueEmpty(q)) {
         *x = q->first->data;
-        QueueNode* aux = q->first;
+        Node* aux = q->first;
         q->first = q->first->next;
         free(aux);
         if (q->first == NULL) q->last = NULL;
@@ -46,7 +46,7 @@ void freeQueue(Queue* q) {
 void printQueue(Queue* q) {
     if (!queueEmpty(q)) {
         printf("Quantidade de elementos na fila: %d\n\n", q->count);
-        QueueNode* aux = q->first;
+        Node* aux = q->first;
         while(aux) {
             printf("%d", aux->data);
             if (aux->next != NULL) printf(" -> ");

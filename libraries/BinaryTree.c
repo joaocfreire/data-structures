@@ -19,27 +19,27 @@ TreeNode* searchTreeNode(TreeNode* root, int data) {
     return searchTreeNode(root->right, data);
 }
 
-void preorderTraversal(TreeNode* root) {
+void preOrderTraversal(TreeNode* root) {
     if (root != NULL) {
         printf("%d ", root->data);
-        preorderTraversal(root->left);
-        preorderTraversal(root->right);
+        preOrderTraversal(root->left);
+        preOrderTraversal(root->right);
     }
 }
 
-void postorderTraversal(TreeNode* root) {
+void postOrderTraversal(TreeNode* root) {
     if (root != NULL) {
-        postorderTraversal(root->left);
-        postorderTraversal(root->right);
+        postOrderTraversal(root->left);
+        postOrderTraversal(root->right);
         printf("%d ", root->data);
     }
 }
 
-void inorderTraversal(TreeNode* root) {
+void inOrderTraversal(TreeNode* root) {
     if (root != NULL) {
-        inorderTraversal(root->left);
+        inOrderTraversal(root->left);
         printf("%d ", root->data);
-        inorderTraversal(root->right);
+        inOrderTraversal(root->right);
     }
 }
 
@@ -51,6 +51,11 @@ int max(int x, int y) {
 int heightTree(TreeNode *root) {
     if (root == NULL) return 0;
     return max(heightTree(root->left), heightTree(root->right)) + 1;
+}
+
+int totalTreeNode(TreeNode* root) {
+    if (root == NULL) return 0;
+    return totalTreeNode(root->left) + totalTreeNode(root->right) + 1;
 }
 
 void printTree(TreeNode* root, int tab) {
