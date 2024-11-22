@@ -1,11 +1,9 @@
-#include <stdbool.h>
-#include "libraries/headers/Queue.h"
-#include "libraries/headers/BinarySearchTree.h"
+#include "../libraries/headers/Queue.h"
+#include "../libraries/headers/BinarySearchTree.h"
 
 /* ------------------------------- LISTA 3 ---------------------------------- */
 
-/*
- * 1) Faça um programa que leia uma ABB, um nó desta árvore
+/* 1) Faça um programa que leia uma ABB, um nó desta árvore
  * e retorne todos seus ancestrais em uma fila. */
 
 Queue* auxAncestrais(TreeNode* root, Queue* queue, int data) {
@@ -37,8 +35,7 @@ Queue* ancestrais(TreeNode* root, int data) {
     return queue;
 }
 
-/*
- * 2) Faça um programa que leia uma ABB, um nó desta árvore
+/* 2) Faça um programa que leia uma ABB, um nó desta árvore
  * e retorne todos seus sucessores em uma fila. */
 
 Queue* auxSucessores(TreeNode* root, Queue* queue, int data) {
@@ -159,7 +156,7 @@ TreeNode* menuTree(TreeNode* root) {
 }
 
 /* Programa Principal */
-int main() {
+void main3() {
     TreeNode* tree = initTree();
     tree = menuTree(tree);
 
@@ -198,6 +195,4 @@ int main() {
     printf("\n");
 
     freeTree(tree);
-
-    return 0;
 }

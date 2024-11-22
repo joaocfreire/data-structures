@@ -1,13 +1,12 @@
 #include <string.h>
 #include <math.h>
-#include "libraries/headers/Stack.h"
-#include "libraries/headers/Queue.h"
-#include "libraries/headers/BinaryTree.h"
+#include "../libraries/headers/Stack.h"
+#include "../libraries/headers/Queue.h"
+#include "../libraries/headers/BinaryTree.h"
 
 /* ------------------------------- LISTA 2 ---------------------------------- */
 
-/*
- * 1) Implemente um programa em C que leia uma árvore A e responda se A é:
+/* 1) Implemente um programa em C que leia uma árvore A e responda se A é:
  * a) estritamente binária (possui 0 ou 2 filhos);
  * b) binária completa (diferença de nível entre as folhas é no máximo 1) ;
  * c) zigue-zague (todos os nós internos possuem exatamente um filho vazio);
@@ -63,8 +62,7 @@ void imprimeFolhas(TreeNode* root) {
     }
 }
 
-/*
- * 2) Dada uma árvore binária A, construa um programa (não recursivo) que faça
+/* 2) Dada uma árvore binária A, construa um programa (não recursivo) que faça
  * uma busca em profundidade utilizando pilhas. */
 
 void buscaProfundidadeComPilha(TreeNode* root) {
@@ -89,8 +87,7 @@ void buscaProfundidadeComPilha(TreeNode* root) {
     freeStack(stack);
 }
 
-/*
- * 3) Dada uma árvore binária A, construa um programa (não recursivo) que faça
+/* 3) Dada uma árvore binária A, construa um programa (não recursivo) que faça
  * uma busca em largura utilizando filas. */
 
 void buscaLarguraComFila(TreeNode* root) {
@@ -116,8 +113,7 @@ void buscaLarguraComFila(TreeNode* root) {
     freeQueue(queue);
 }
 
-/*
- * 4) Dada uma árvore binária A, construa um programa (não recursivo) que faça
+/* 4) Dada uma árvore binária A, construa um programa (não recursivo) que faça
  * uma busca em pós-ordem utilizando pilhas. */
 
 void buscaPosOrdemComPilha(TreeNode* root) {
@@ -146,8 +142,7 @@ void buscaPosOrdemComPilha(TreeNode* root) {
     freeStack(stack);
 }
 
-/*
- * 5) Faça um programa com busca em pós-ordem (recursivo) para apagar
+/* 5) Faça um programa com busca em pós-ordem (recursivo) para apagar
  * todos os nós de uma árvore A dada. Refaça o algoritmo em pré-ordem. */
 
 void liberaEmPosOrdem(TreeNode* root) {
@@ -183,8 +178,7 @@ bool binariaCheia(TreeNode* root) {
     return false;
 }
 
-/*
- * 7) Escreva uma função que cria uma imagem espelho de uma árvore binária,
+/* 7) Escreva uma função que cria uma imagem espelho de uma árvore binária,
  * isto é, todos os filhos à esquerda tornam-se filhos à direita, e vice-versa. */
 
 TreeNode* espelho(TreeNode* root) {
@@ -294,7 +288,7 @@ TreeNode* buildTree() {
 }
 
 /* Programa Principal */
-int main2(){
+void main2(){
     TreeNode* tree = buildTree();
 
     printf("\n");
@@ -345,6 +339,4 @@ int main2(){
     //liberaEmPreOrdem(tree);
 
     freeTree(tree);
-
-    return 0;
 }
