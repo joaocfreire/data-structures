@@ -12,7 +12,8 @@ typedef struct queue {
 
 Queue* createQueue();
 void enqueue(Queue* q, int x);
-void dequeue(Queue* q, int* x);
+void dequeue(Queue* q);
+int front(Queue* q);
 bool queueEmpty(Queue* q);
 void freeQueue(Queue* q);
 void printQueue(Queue* q);

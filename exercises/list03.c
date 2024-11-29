@@ -114,7 +114,7 @@ TreeNode* balanceamento(TreeNode* root) {
 /* Menu que realiza as operações de inserção, remoção e impressão
  * de uma árvorea partir de inputs do usuário */
 
-TreeNode* menuTree(TreeNode* root) {
+TreeNode* buildSearchTree(TreeNode* root) {
     bool flag = true;
     int op, num;
     do {
@@ -156,9 +156,9 @@ TreeNode* menuTree(TreeNode* root) {
 }
 
 /* Programa Principal */
-void main3() {
+void main() {
     TreeNode* tree = initTree();
-    tree = menuTree(tree);
+    tree = buildSearchTree(tree);
 
     printTree(tree, 0);
     printf("\n\n");

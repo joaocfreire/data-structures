@@ -33,7 +33,8 @@ void menuPilha() {
                 printf("\nNumero %d entrou na pilha!\n", stack->top->data);
                 break;
             case 2:
-                pop(stack, &num);
+                num = top(stack);
+                pop(stack);
                 if (num)
                     printf("\nNumero %d saiu da pilha\n", num);
                 else
@@ -94,7 +95,8 @@ void menuFila() {
                 printf("\nNumero %d entrou na fila!\n", queue->first->data);
                 break;
             case 2:
-                dequeue(queue, &num);
+                num = front(queue);
+                dequeue(queue);
                 if (num)
                     printf("\nNumero %d saiu da fila\n", num);
                 else
@@ -123,7 +125,7 @@ void menuFila() {
 }
 
 /* Programa Principal */
-void main() {
+void main01() {
     menuPilha();
     menuFila();
 }

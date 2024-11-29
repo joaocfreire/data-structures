@@ -18,16 +18,19 @@ void enqueue(Queue* q, int x) {
     q->count++;
 }
 
-void dequeue(Queue* q, int* x) {
+void dequeue(Queue* q) {
     if (!queueEmpty(q)) {
-        *x = q->first->data;
         Node* aux = q->first;
         q->first = q->first->next;
         free(aux);
         if (q->first == NULL) q->last = NULL;
         q->count--;
     }
-    else *x = 0;
+}
+
+int front(Queue* q) {
+    if (!queueEmpty(q)) return q->first->data;
+    return -1;
 }
 
 bool queueEmpty(Queue* q) {
@@ -37,15 +40,16 @@ bool queueEmpty(Queue* q) {
 
 void freeQueue(Queue* q) {
     if (!queueEmpty(q)) {
-        int x;
-        dequeue(q, &x);
+        dequeue(q);
         freeQueue(q);
     }
+    else
+        free(q);
 }
 
 void printQueue(Queue* q) {
     if (!queueEmpty(q)) {
-        printf("Quantidade de elementos na fila: %d\n\n", q->count);
+        printf("Quantidade de elementos na fila: %d\n", q->count);
         Node* aux = q->first;
         while(aux) {
             printf("%d", aux->data);

@@ -11,7 +11,7 @@ typedef struct stack {
 
 Stack* createStack();
 void push(Stack* s, int x);
-void pop(Stack* s, int* x);
+void pop(Stack* s);
 int top(Stack* s);
 bool stackEmpty(Stack* s);
 void freeStack(Stack* s);

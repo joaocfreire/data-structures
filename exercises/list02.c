@@ -75,7 +75,8 @@ void buscaProfundidadeComPilha(TreeNode* root) {
         if (aux != NULL)
             aux = aux->left;
         else {
-            pop(stack, &x);
+            x = top(stack);
+            pop(stack);
             aux = searchTreeNode(root, x);
             printf("%d ", aux->data);
             if (aux->right)
@@ -100,7 +101,8 @@ void buscaLarguraComFila(TreeNode* root) {
         if (aux != NULL)
             aux = aux->left;
         else {
-            dequeue(queue, &x);
+            x = front(queue);
+            dequeue(queue);
             aux = searchTreeNode(root, x);
             printf("%d ", aux->data);
             if (aux->left)
@@ -135,7 +137,7 @@ void buscaPosOrdemComPilha(TreeNode* root) {
             else {
                 printf("%d ", x);
                 last = topNode;
-                pop(stack, &x);
+                pop(stack);
             }
         }
     }
@@ -288,7 +290,7 @@ TreeNode* buildTree() {
 }
 
 /* Programa Principal */
-void main2(){
+void main02(){
     TreeNode* tree = buildTree();
 
     printf("\n");

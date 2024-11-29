@@ -15,15 +15,13 @@ void push(Stack* s, int x) {
     s->count++;
 }
 
-void pop(Stack* s, int* x) {
+void pop(Stack* s) {
     if (!stackEmpty(s)) {
         Node* aux = s->top;
-        *x = s->top->data;
         s->top = s->top->next;
         s->count--;
         free(aux);
     }
-    else *x = 0;
 }
 
 int top(Stack* s) {
@@ -47,7 +45,7 @@ void freeStack(Stack* s) {
 
 void printStack(Stack* s) {
     if (!stackEmpty(s)) {
-        printf("Quantidade de elementos na pilha: %d\n\n", s->count);
+        printf("Quantidade de elementos na pilha: %d\n", s->count);
         Node* aux = s->top;
         while (aux) {
             printf("%d", aux->data);
