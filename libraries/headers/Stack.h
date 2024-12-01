@@ -9,12 +9,12 @@ typedef struct stack {
     int count;
 } Stack;
 
-Stack* createStack();
-void push(Stack* s, int x);
-void pop(Stack* s);
-int top(Stack* s);
-bool stackEmpty(Stack* s);
-void freeStack(Stack* s);
-void printStack(Stack* s);
+Stack* create_stack();
+void push(Stack* stack, int data);
+void pop(Stack* stack);
+int top(Stack* stack);
+bool stack_empty(Stack* stack);
+void free_stack(Stack* stack);
+void print_stack(Stack* stack);
 
 #endif //STACK_H

@@ -8,8 +8,8 @@
 
 // Pilha implementada em "Stack.h"
 
-void menuPilha() {
-    Stack* stack = createStack();
+void menu_pilha() {
+    Stack* stack = create_stack();
     int op, num;
     bool flag = true;
 
@@ -46,12 +46,12 @@ void menuPilha() {
                 break;
             case 4:
                 printf("\n");
-                printStack(stack);
+                print_stack(stack);
                 printf("\n");
                 break;
             case 5:
-                freeStack(stack);
-                stack = createStack();
+                free_stack(stack);
+                stack = create_stack();
                 printf("\nPilha zerada!\n");
                 break;
             case 6:
@@ -63,7 +63,7 @@ void menuPilha() {
         }
     }
 
-    freeStack(stack);
+    free_stack(stack);
 }
 
 /* 2) Implemente uma fila dinâmica e faça um programa
@@ -71,8 +71,8 @@ void menuPilha() {
 
 // Fila Implementada em "Queue.h"
 
-void menuFila() {
-    Queue* queue = createQueue();
+void menu_fila() {
+    Queue* queue = create_queue();
     int op, num;
     bool flag = true;
 
@@ -104,12 +104,12 @@ void menuFila() {
                 break;
             case 3:
                 printf("\n");
-                printQueue(queue);
+                print_queue(queue);
                 printf("\n");
                 break;
             case 4:
-                freeQueue(queue);
-                queue = createQueue();
+                free_queue(queue);
+                queue = create_queue();
                 printf("\nFila zerada!\n");
                 break;
             case 5:
@@ -121,11 +121,12 @@ void menuFila() {
         }
     }
 
-    freeQueue(queue);
+    free_queue(queue);
 }
 
 /* Programa Principal */
-void main01() {
-    menuPilha();
-    menuFila();
+int main1() {
+    menu_pilha();
+    menu_fila();
+    return 0;
 }

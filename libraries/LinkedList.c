@@ -1,61 +1,63 @@
 #include "headers/LinkedList.h"
 
-Node* initList() {
+Node* init_list() {
     return NULL;
 }
 
-Node* insertFront(Node* l, int data) {
+Node* insert_front(Node* list, int data) {
     Node* new = (Node*) malloc(sizeof(Node));
     new->data = data;
-    new->next = l;
+    new->next = list;
     return new;
 }
 
-Node* insertBack(Node* l, int data) {
+Node* insert_back(Node* list, int data) {
     Node* new = (Node*) malloc(sizeof(Node));
     new->data = data;
     new->next = NULL;
-    if (l == NULL) // lista vazia
-        l = new;
+    if (list == NULL) // lista vazia
+        list = new;
     else {
-        if (l->next == NULL) // fim da lista
-            l->next = new;
+        if (list->next == NULL) // fim da lista
+            list->next = new;
         else
-            insertBack(l->next, data);
+            insert_back(list->next, data);
     }
-    return l;
+    return list;
 }
 
-Node* searchInList(Node* l, int data) {
-    if (l == NULL || l->data == data)
-        return l;
-    return searchInList(l->next, data);
+Node* search_in_list(Node* list, int data) {
+    if (list == NULL || list->data == data)
+        return list;
+    return search_in_list(list->next, data);
 }
 
-Node* removeFromList(Node* l, int data) {
-    if (l == NULL) return l;
-    if (l->data == data) {
-        Node* aux = l;
-        l = l->next;
+Node* remove_from_list(Node* list, int data) {
+    if (list == NULL)
+        return list;
+    if (list->data == data) {
+        Node* aux = list;
+        list = list->next;
         free(aux);
     }
     else
-        l->next = removeFromList(l->next, data);
-    return  l;
+        list->next = remove_from_list(list->next, data);
+    return  list;
 }
 
-void freeList(Node* l) {
-    if (l) {
-        freeList(l->next);
-        free(l);
+void free_list(Node* list) {
+    if (list) {
+        free_list(list->next);
+        free(list);
     }
 }
 
-void printList(Node* l) {
-    if (l) {
-        printf("%d", l->data);
-        if (l->next)
-            printf("-> ");
-            printList(l->next);
+void print_list(Node* list) {
+    if (list) {
+        printf("%d", list->data);
+        if (list->next) {
+            printf(" -> ");
+            print_list(list->next);
+        }
     }
 }

@@ -1,61 +1,73 @@
 #include "headers/Queue.h"
 
-Queue* createQueue() {
-    Queue* q = (Queue*) malloc(sizeof(Queue));
-    q->first = NULL;
-    q->last = NULL;
-    q->count = 0;
-    return q;
+Queue* create_queue() {
+    Queue* queue = (Queue*) malloc(sizeof(Queue));
+    queue->first = NULL;
+    queue->last = NULL;
+    queue->count = 0;
+    return queue;
 }
 
-void enqueue(Queue* q, int x) {
-    Node* newNode = (Node*) malloc(sizeof(Node));
-    newNode->data = x;
-    newNode->next = NULL;
-    if (queueEmpty(q)) q->first = newNode;
-    else q->last->next = newNode;
-    q->last = newNode;
-    q->count++;
+void enqueue(Queue* queue, int data) {
+    Node* new = (Node*) malloc(sizeof(Node));
+    new->data = data;
+    new->next = NULL;
+    if (queue_empty(queue))
+        queue->first = new;
+    else
+        queue->last->next = new;
+    queue->last = new;
+    queue->count++;
 }
 
-void dequeue(Queue* q) {
-    if (!queueEmpty(q)) {
-        Node* aux = q->first;
-        q->first = q->first->next;
+void dequeue(Queue* queue) {
+    if (!queue_empty(queue)) {
+        Node* aux = queue->first;
+        queue->first = queue->first->next;
         free(aux);
-        if (q->first == NULL) q->last = NULL;
-        q->count--;
+        if (queue->first == NULL)
+            queue->last = NULL;
+        queue->count--;
     }
 }
 
-int front(Queue* q) {
-    if (!queueEmpty(q)) return q->first->data;
+int front(Queue* queue) {
+    if (!queue_empty(queue))
+        return queue->first->data;
     return -1;
 }
 
-bool queueEmpty(Queue* q) {
-    if (q == NULL || (q->first == NULL && q->last == NULL)) return true;
+bool queue_empty(Queue* queue) {
+    if (queue == NULL || (queue->first == NULL && queue->last == NULL))
+        return true;
     return false;
 }
 
-void freeQueue(Queue* q) {
-    if (!queueEmpty(q)) {
-        dequeue(q);
-        freeQueue(q);
+void aux_free_queue(Node* node) {
+    if (node != NULL) {
+        aux_free_queue(node->next);
+        free(node);
     }
-    else
-        free(q);
 }
 
-void printQueue(Queue* q) {
-    if (!queueEmpty(q)) {
-        printf("Quantidade de elementos na fila: %d\n", q->count);
-        Node* aux = q->first;
-        while(aux) {
+void free_queue(Queue* queue) {
+    if (queue != NULL) {
+        aux_free_queue(queue->first);
+        free(queue);
+    }
+}
+
+void print_queue(Queue* queue) {
+    if (!queue_empty(queue)) {
+        printf("Quantidade de elementos na fila: %d\n", queue->count);
+        Node* aux = queue->first;
+        while (aux) {
             printf("%d", aux->data);
-            if (aux->next != NULL) printf(" -> ");
+            if (aux->next != NULL)
+                printf(" -> ");
             aux = aux->next;
         }
     }
-    else printf("Fila vazia");
+    else
+        printf("Fila vazia");
 }

@@ -1,57 +1,61 @@
 #include "headers/Stack.h"
 
-Stack* createStack() {
-    Stack* new = (Stack*) malloc(sizeof(Stack));
-    new->top = NULL;
-    new->count = 0;
-    return new;
+Stack* create_stack() {
+    Stack* stack = (Stack*) malloc(sizeof(Stack));
+    stack->top = NULL;
+    stack->count = 0;
+    return stack;
 }
 
-void push(Stack* s, int x) {
-    Node* newNode = (Node*) malloc(sizeof(Node));
-    newNode->data = x;
-    newNode->next = s->top;
-    s->top = newNode;
-    s->count++;
+void push(Stack* stack, int data) {
+    Node* new = (Node*) malloc(sizeof(Node));
+    new->data = data;
+    new->next = stack->top;
+    stack->top = new;
+    stack->count++;
 }
 
-void pop(Stack* s) {
-    if (!stackEmpty(s)) {
-        Node* aux = s->top;
-        s->top = s->top->next;
-        s->count--;
+void pop(Stack* stack) {
+    if (!stack_empty(stack)) {
+        Node* aux = stack->top;
+        stack->top = stack->top->next;
+        stack->count--;
         free(aux);
     }
 }
 
-int top(Stack* s) {
-    if (!stackEmpty(s)) return s->top->data;
+int top(Stack* stack) {
+    if (!stack_empty(stack))
+        return stack->top->data;
     return -1;
 }
 
-bool stackEmpty(Stack* s) {
-    if (s == NULL || s->top == NULL) return true;
+bool stack_empty(Stack* stack) {
+    if (stack == NULL || stack->top == NULL)
+        return true;
     return false;
 }
 
-void freeStack(Stack* s) {
-    while (!stackEmpty(s)) {
-        Node *aux = s->top;
-        s->top = s->top->next;
+void free_stack(Stack* stack) {
+    while (!stack_empty(stack)) {
+        Node *aux = stack->top;
+        stack->top = stack->top->next;
         free(aux);
     }
-    free(s);
+    free(stack);
 }
 
-void printStack(Stack* s) {
-    if (!stackEmpty(s)) {
-        printf("Quantidade de elementos na pilha: %d\n", s->count);
-        Node* aux = s->top;
+void print_stack(Stack* stack) {
+    if (!stack_empty(stack)) {
+        printf("Quantidade de elementos na pilha: %d\n", stack->count);
+        Node* aux = stack->top;
         while (aux) {
             printf("%d", aux->data);
-            if (aux->next) printf(" -> ");
+            if (aux->next)
+                printf(" -> ");
             aux = aux->next;
         }
     }
-    else printf("Pilha vazia");
+    else
+        printf("Pilha vazia");
 }

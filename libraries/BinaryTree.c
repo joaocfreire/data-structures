@@ -1,79 +1,87 @@
 #include "headers/BinaryTree.h"
 
-TreeNode* initTree() {
+TreeNode* init_tree() {
     return NULL;
 }
 
-TreeNode* createTreeNode(int root, TreeNode* left, TreeNode* right) {
-    TreeNode* newNode = (TreeNode*) malloc(sizeof(TreeNode));
-    newNode->data = root;
-    newNode->left = left;
-    newNode->right = right;
-    return newNode;
+TreeNode* create_tree_node(int root, TreeNode* left, TreeNode* right) {
+    TreeNode* new = (TreeNode*) malloc(sizeof(TreeNode));
+    new->data = root;
+    new->left = left;
+    new->right = right;
+    return new;
 }
 
-TreeNode* searchTreeNode(TreeNode* root, int data) {
-    if (root == NULL || root->data == data) return root;
-    TreeNode* s = searchTreeNode(root->left, data);
-    if (s != NULL) return s;
-    return searchTreeNode(root->right, data);
+TreeNode* search_tree_node(TreeNode* root, int data) {
+    if (root == NULL || root->data == data)
+        return root;
+
+    TreeNode* s = search_tree_node(root->left, data);
+    if (s != NULL)
+        return s;
+
+    return search_tree_node(root->right, data);
 }
 
-void preOrderTraversal(TreeNode* root) {
+void pre_order_traversal(TreeNode* root) {
     if (root != NULL) {
         printf("%d ", root->data);
-        preOrderTraversal(root->left);
-        preOrderTraversal(root->right);
+        pre_order_traversal(root->left);
+        pre_order_traversal(root->right);
     }
 }
 
-void postOrderTraversal(TreeNode* root) {
+void post_order_traversal(TreeNode* root) {
     if (root != NULL) {
-        postOrderTraversal(root->left);
-        postOrderTraversal(root->right);
+        post_order_traversal(root->left);
+        post_order_traversal(root->right);
         printf("%d ", root->data);
     }
 }
 
-void inOrderTraversal(TreeNode* root) {
+void in_order_traversal(TreeNode* root) {
     if (root != NULL) {
-        inOrderTraversal(root->left);
+        in_order_traversal(root->left);
         printf("%d ", root->data);
-        inOrderTraversal(root->right);
+        in_order_traversal(root->right);
     }
 }
 
 int max(int x, int y) {
-    if (x >= y) return x;
+    if (x >= y)
+        return x;
     return y;
 }
 
-int heightTree(TreeNode *root) {
-    if (root == NULL) return 0;
-    return max(heightTree(root->left), heightTree(root->right)) + 1;
+int height_tree(TreeNode *root) {
+    if (root == NULL)
+        return 0;
+    return max(height_tree(root->left), height_tree(root->right)) + 1;
 }
 
-int totalTreeNode(TreeNode* root) {
-    if (root == NULL) return 0;
-    return totalTreeNode(root->left) + totalTreeNode(root->right) + 1;
+int total_tree_node(TreeNode* root) {
+    if (root == NULL)
+        return 0;
+    return total_tree_node(root->left) + total_tree_node(root->right) + 1;
 }
 
-void printTree(TreeNode* root, int tab) {
-    for (int i = 0; i < tab; i++) {
+void print_tree(TreeNode* root, int tab) {
+    for (int i = 0; i < tab; i++)
         printf(".");
-    }
     if (root != NULL) {
         printf("%d\n", root->data);
-        printTree(root->left, tab + 2);
+        print_tree(root->left, tab + 2);
         printf("\n");
-        printTree(root->right, tab + 2);
-    } else printf("vazio");
+        print_tree(root->right, tab + 2);
+    }
+    else
+        printf("null");
 }
 
-void freeTree(TreeNode* root) {
+void free_tree(TreeNode* root) {
     if (root != NULL) {
-        freeTree(root->left);
-        freeTree(root->right);
+        free_tree(root->left);
+        free_tree(root->right);
         free(root);
     }
 }

@@ -6,15 +6,15 @@
 
 typedef struct node {
     int data;
-    struct node *next;
+    struct node* next;
 } Node;
 
-Node* initList();
-Node* insertFront(Node* l, int data);
-Node* insertBack(Node* l, int x);
-Node* searchInList(Node* l, int x);
-Node* removeFromList(Node* l, int x);
-void freeList(Node* l);
-void printList(Node* l);
+Node* init_list();
+Node* insert_front(Node* list, int data);
+Node* insert_back(Node* list, int data);
+Node* search_in_list(Node* list, int data);
+Node* remove_from_list(Node* list, int data);
+void free_list(Node* list);
+void print_list(Node* list);
 
 #endif //LINKEDLIST_H

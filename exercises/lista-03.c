@@ -6,7 +6,7 @@
 /* 1) Faça um programa que leia uma ABB, um nó desta árvore
  * e retorne todos seus ancestrais em uma fila. */
 
-Queue* auxAncestrais(TreeNode* root, Queue* queue, int data) {
+Queue* aux_ancestrais(TreeNode* root, Queue* queue, int data) {
     if (root != NULL) {
         if (root->data == data)
             return queue;
@@ -14,15 +14,15 @@ Queue* auxAncestrais(TreeNode* root, Queue* queue, int data) {
         enqueue(queue, root->data);
 
         if (root->data > data)
-            queue = auxAncestrais(root->left, queue, data);
+            queue = aux_ancestrais(root->left, queue, data);
 
         else if (root->data < data)
-            queue = auxAncestrais(root->right, queue, data);
+            queue = aux_ancestrais(root->right, queue, data);
 
         return queue;
     }
 
-    freeQueue(queue);
+    free_queue(queue);
     return NULL;
 }
 
@@ -30,23 +30,23 @@ Queue* ancestrais(TreeNode* root, int data) {
     if (root == NULL)
         return NULL;
 
-    Queue* queue = createQueue();
-    queue = auxAncestrais(root, queue, data);
+    Queue* queue = create_queue();
+    queue = aux_ancestrais(root, queue, data);
     return queue;
 }
 
 /* 2) Faça um programa que leia uma ABB, um nó desta árvore
  * e retorne todos seus sucessores em uma fila. */
 
-Queue* auxSucessores(TreeNode* root, Queue* queue, int data) {
+Queue* aux_sucessores(TreeNode* root, Queue* queue, int data) {
     if (root == NULL)
         return queue;
 
     if (root->data != data)
         enqueue(queue, root->data);
 
-    queue = auxSucessores(root->left, queue, data);
-    queue = auxSucessores(root->right, queue, data);
+    queue = aux_sucessores(root->left, queue, data);
+    queue = aux_sucessores(root->right, queue, data);
     return queue;
 }
 
@@ -55,22 +55,22 @@ Queue* sucessores(TreeNode* root, int data) {
         return NULL;
 
     TreeNode* node = search(root, data);
-    Queue* queue = createQueue();
-    queue = auxSucessores(node, queue, data);
+    Queue* queue = create_queue();
+    queue = aux_sucessores(node, queue, data);
     return queue;
 }
 
 /* 3) Faça um programa que leia uma ABB (pelo teclado) e imprima todos os nós da
  * árvore dentro de uma faixa de valores [min, max] fornecida também pelo usuário. */
 
-void printInRange(TreeNode* root, int min, int max) {
+void print_in_range(TreeNode* root, int min, int max) {
     if (root != NULL) {
         if (root->data >= min && root->data <= max)
             printf("%d ", root->data);
         if (root->data > min)
-            printInRange(root->left, min, max);
+            print_in_range(root->left, min, max);
         if (root->data < max)
-            printInRange(root->right, min, max);
+            print_in_range(root->right, min, max);
     }
 }
 
@@ -78,34 +78,34 @@ void printInRange(TreeNode* root, int min, int max) {
  * Crie um vetor ordenado com os nós da árvore utilizando busca em ordem simétrica
  * e reconstrua a árvore a partir dele. */
 
-int* treeToVet(TreeNode* root, int* vet, int* pos) {
+int* tree_to_vet(TreeNode* root, int* vet, int* pos) {
     if (root == NULL)
         return vet;
-    vet = treeToVet(root->left, vet, pos);
+    vet = tree_to_vet(root->left, vet, pos);
     vet[(*pos)] = root->data;
     (*pos)++;
-    vet = treeToVet(root->right, vet, pos);
+    vet = tree_to_vet(root->right, vet, pos);
     return vet;
 }
 
-TreeNode* auxBalanceamento(TreeNode* root, int* vet, int inicio, int fim) {
+TreeNode* aux_balanceamento(TreeNode* root, int* vet, int inicio, int fim) {
     if (inicio <= fim) {
         int meio = (inicio + fim) / 2;
         root = insert(root, vet[meio]);
-        auxBalanceamento(root, vet, inicio, meio-1);
-        auxBalanceamento(root, vet, meio+1, fim);
+        aux_balanceamento(root, vet, inicio, meio-1);
+        aux_balanceamento(root, vet, meio+1, fim);
     }
     return root;
 }
 
 TreeNode* balanceamento(TreeNode* root) {
-    int tot = totalTreeNode(root);
+    int tot = total_tree_node(root);
     int* vet = (int*) malloc(sizeof(int)*tot);
     int pos = 0;
-    vet = treeToVet(root, vet, &pos);
-    freeTree(root);
-    root = initTree();
-    root = auxBalanceamento(root, vet, 0, tot-1);
+    vet = tree_to_vet(root, vet, &pos);
+    free_tree(root);
+    root = init_tree();
+    root = aux_balanceamento(root, vet, 0, tot-1);
     free(vet);
     return root;
 }
@@ -114,7 +114,7 @@ TreeNode* balanceamento(TreeNode* root) {
 /* Menu que realiza as operações de inserção, remoção e impressão
  * de uma árvorea partir de inputs do usuário */
 
-TreeNode* buildSearchTree(TreeNode* root) {
+TreeNode* build_search_tree(TreeNode* root) {
     bool flag = true;
     int op, num;
     do {
@@ -141,7 +141,7 @@ TreeNode* buildSearchTree(TreeNode* root) {
                 break;
             case 3:
                 printf("\n");
-                printTree(root, 0);
+                print_tree(root, 0);
                 printf("\n");
                 break;
             case 4:
@@ -156,11 +156,11 @@ TreeNode* buildSearchTree(TreeNode* root) {
 }
 
 /* Programa Principal */
-void main() {
-    TreeNode* tree = initTree();
-    tree = buildSearchTree(tree);
+int main3() {
+    TreeNode* tree = init_tree();
+    tree = build_search_tree(tree);
 
-    printTree(tree, 0);
+    print_tree(tree, 0);
     printf("\n\n");
 
     int num;
@@ -170,29 +170,31 @@ void main() {
     scanf("%d", &num);
     q = ancestrais(tree, num);
     printf("\n");
-    printQueue(q);
+    print_queue(q);
     printf("\n\n");
-    freeQueue(q);
+    free_queue(q);
 
     printf("Digite um no para verificar seus sucessores:");
     scanf("%d", &num);
     q = sucessores(tree, num);
     printf("\n");
-    printQueue(q);
+    print_queue(q);
     printf("\n\n");
-    freeQueue(q);
+    free_queue(q);
 
     int min, max;
     printf("Digite um intervalo [min, max]:");
     scanf("%d %d", &min, &max);
     printf("\nOs nos nesse intervalo sao: ");
-    printInRange(tree, min, max);
+    print_in_range(tree, min, max);
     printf("\n\n");
 
     printf("Balanceando a arvore:\n\n");
     tree = balanceamento(tree);
-    printTree(tree, 0);
+    print_tree(tree, 0);
     printf("\n");
 
-    freeTree(tree);
+    free_tree(tree);
+
+    return 0;
 }
