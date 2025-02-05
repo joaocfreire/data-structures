@@ -1,10 +1,12 @@
-#include "../libraries/headers/Stack.h"
-#include "../libraries/headers/Queue.h"
+#include "../libs/Stack/Stack.h"
+#include "../libs/Queue/Queue.h"
 
 /* ------------------------------- LISTA 1 ---------------------------------- */
 
-/* 1) Implemente uma pilha dinâmica e faça um programa
- * de menu para testar suas operações */
+/*
+ * 1) Implemente uma pilha dinâmica e
+ * faça um menu para testar suas operações
+ */
 
 // Pilha implementada em "Stack.h"
 
@@ -66,8 +68,10 @@ void menu_pilha() {
     free_stack(stack);
 }
 
-/* 2) Implemente uma fila dinâmica e faça um programa
- * de menu para testar suas operações */
+/*
+ * 2) Implemente uma fila dinâmica e
+ * faça um menu para testar suas operações
+ */
 
 // Fila Implementada em "Queue.h"
 
@@ -125,7 +129,7 @@ void menu_fila() {
 }
 
 /* Programa Principal */
-int main1() {
+int main() {
     menu_pilha();
     menu_fila();
     return 0;

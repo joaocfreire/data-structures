@@ -1,7 +1,7 @@
 #ifndef BINARYSEARCHTREE_H
 #define BINARYSEARCHTREE_H
 
-#include "BinaryTree.h"
+#include "../BinaryTree/BinaryTree.h"
 
 TreeNode* search(TreeNode* root, int data);
 TreeNode* insert(TreeNode* root, int data);

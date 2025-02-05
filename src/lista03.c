@@ -1,10 +1,12 @@
-#include "../libraries/headers/Queue.h"
-#include "../libraries/headers/BinarySearchTree.h"
+#include "../libs/Queue/Queue.h"
+#include "../libs/BinarySearchTree/BinarySearchTree.h"
 
 /* ------------------------------- LISTA 3 ---------------------------------- */
 
-/* 1) Faça um programa que leia uma ABB, um nó desta árvore
- * e retorne todos seus ancestrais em uma fila. */
+/*
+ * 1) Faça um programa que leia uma ABB, um nó desta árvore
+ * e retorne todos seus ancestrais em uma fila.
+ */
 
 Queue* aux_ancestrais(TreeNode* root, Queue* queue, int data) {
     if (root != NULL) {
@@ -35,8 +37,10 @@ Queue* ancestrais(TreeNode* root, int data) {
     return queue;
 }
 
-/* 2) Faça um programa que leia uma ABB, um nó desta árvore
- * e retorne todos seus sucessores em uma fila. */
+/*
+ * 2) Faça um programa que leia uma ABB, um nó desta árvore
+ * e retorne todos seus sucessores em uma fila.
+ */
 
 Queue* aux_sucessores(TreeNode* root, Queue* queue, int data) {
     if (root == NULL)
@@ -60,8 +64,10 @@ Queue* sucessores(TreeNode* root, int data) {
     return queue;
 }
 
-/* 3) Faça um programa que leia uma ABB (pelo teclado) e imprima todos os nós da
- * árvore dentro de uma faixa de valores [min, max] fornecida também pelo usuário. */
+/*
+ * 3) Faça um programa que leia uma ABB (pelo teclado) e imprima todos os nós da
+ * árvore dentro de uma faixa de valores [min, max] fornecida também pelo usuário.
+ */
 
 void print_in_range(TreeNode* root, int min, int max) {
     if (root != NULL) {
@@ -74,9 +80,11 @@ void print_in_range(TreeNode* root, int min, int max) {
     }
 }
 
-/* 4) Faça um algoritmo que torne uma árvore o mais balanceada possível.
+/*
+ * 4) Faça um algoritmo que torne uma árvore o mais balanceada possível.
  * Crie um vetor ordenado com os nós da árvore utilizando busca em ordem simétrica
- * e reconstrua a árvore a partir dele. */
+ * e reconstrua a árvore a partir dele.
+ */
 
 int* tree_to_vet(TreeNode* root, int* vet, int* pos) {
     if (root == NULL)
@@ -111,8 +119,10 @@ TreeNode* balanceamento(TreeNode* root) {
 }
 
 
-/* Menu que realiza as operações de inserção, remoção e impressão
- * de uma árvorea partir de inputs do usuário */
+/*
+ * Menu que realiza as operações de inserção, remoção e impressão
+ * de uma árvore a partir de inputs do usuário
+ */
 
 TreeNode* build_search_tree(TreeNode* root) {
     bool flag = true;
@@ -156,7 +166,7 @@ TreeNode* build_search_tree(TreeNode* root) {
 }
 
 /* Programa Principal */
-int main3() {
+int main() {
     TreeNode* tree = init_tree();
     tree = build_search_tree(tree);
 

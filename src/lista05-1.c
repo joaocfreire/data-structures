@@ -1,10 +1,11 @@
 #include <stdbool.h>
-#include "../libraries/headers/Graph.h"
+#include "../libs/Graph/Graph.h"
 
 /* ------------------------------- LISTA 5-1 ---------------------------------- */
 
-
-/* 1) Descubra a quantidade de arestas de um grafo */
+/*
+ * 1) Descubra a quantidade de arestas de um grafo
+ */
 
 int edges(GraphNode* graph) {
     int count = 0;
@@ -23,7 +24,9 @@ int edges(GraphNode* graph) {
     return count / 2; // para grafos não orientados
 }
 
-/* 2) Ache a quantidade de vértices de um grafo */
+/*
+ * 2) Ache a quantidade de vértices de um grafo
+ */
 
 int vertices(GraphNode* graph) {
     int count = 0;
@@ -35,8 +38,10 @@ int vertices(GraphNode* graph) {
     return count;
 }
 
-/* 3) Verificar se o grafo, passado como parâmetro de entrada,
- * possui todos os nós com grau igual ao parâmetro k */
+/*
+ * 3) Verificar se o grafo, passado como parâmetro de entrada,
+ * possui todos os nós com grau igual ao parâmetro k
+ */
 
 bool test_k(GraphNode* graph, int k) {
     bool ext = true;
@@ -57,7 +62,9 @@ bool test_k(GraphNode* graph, int k) {
     return ext;
 }
 
-/* 4) Testar se dois grafos são iguais */
+/*
+ * 4) Testar se dois grafos são iguais
+ */
 
 bool equal_graphs(GraphNode* graph_x, GraphNode* graph_y) {
     GraphNode* x = graph_x;
@@ -166,6 +173,9 @@ int main() {
         printf("Os grafos sao iguais!\n\n");
     else
         printf("Os grafos sao diferentes!\n\n");
+
+    free_graph(graph_x);
+    free_graph(graph_y);
 
     return 0;
 }

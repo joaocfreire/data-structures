@@ -2,7 +2,7 @@
 #define STACK_H
 
 #include <stdbool.h>
-#include "LinkedList.h"
+#include "../LinkedList/LinkedList.h"
 
 typedef struct stack {
     Node* top;

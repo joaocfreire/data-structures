@@ -1,4 +1,4 @@
-#include "headers/LinkedList.h"
+#include "LinkedList.h"
 
 Node* init_list() {
     return NULL;

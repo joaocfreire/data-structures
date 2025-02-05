@@ -1,4 +1,4 @@
-#include "headers/Graph.h"
+#include "Graph.h"
 
 GraphNode* init_graph() {
     return NULL;

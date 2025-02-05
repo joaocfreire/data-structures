@@ -2,7 +2,7 @@
 #define QUEUE_H
 
 #include <stdbool.h>
-#include "LinkedList.h"
+#include "../LinkedList/LinkedList.h"
 
 typedef struct queue {
     Node* first;

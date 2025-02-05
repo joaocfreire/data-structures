@@ -1,4 +1,4 @@
-#include "headers/BinarySearchTree.h"
+#include "BinarySearchTree.h"
 
 TreeNode* search(TreeNode* root, int data) {
     if (root == NULL || root->data == data)

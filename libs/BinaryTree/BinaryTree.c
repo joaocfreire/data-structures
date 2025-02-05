@@ -1,4 +1,4 @@
-#include "headers/BinaryTree.h"
+#include "BinaryTree.h"
 
 TreeNode* init_tree() {
     return NULL;

@@ -207,7 +207,7 @@ int follow_older(InstaGraph* graph, bool flag) {
 /* Menu para construir o grafo a partir de inputs do usuário */
 InstaGraph* build_insta_graph() {
     InstaGraph* graph = init_insta_graph();
-    char name[15], name_x[15], name_y[15];
+    char name[10], name_x[10], name_y[10];
     int op, age;
     bool flag = true;
 
@@ -224,38 +224,38 @@ InstaGraph* build_insta_graph() {
         switch (op) {
             case 1:
                 printf("\nDigite o nome do usuario que deseja adiconar:");
-            scanf("%s", name);
-            printf("\nDigite a idade do usuario que deseja adicionar:");
-            scanf("%d", &age);
-            graph = add_user(graph, name, age);
-            printf("\nUsuario %s adiconado ao grafo!\n", name);
-            break;
+                scanf("%s", name);
+                printf("\nDigite a idade do usuario que deseja adicionar:");
+                scanf("%d", &age);
+                graph = add_user(graph, name, age);
+                printf("\nUsuario %s adiconado ao grafo!\n", name);
+                break;
             case 2:
                 printf("\nDigite o nome do usuario x:");
-            scanf("%s", name_x);
-            printf("\nDigite o nome do usuario y:");
-            scanf("%s", name_y);
-            follow_user(graph, name_x, name_y);
-            printf("\n%s segue %s agora\n", name_x, name_y);
-            break;
+                scanf("%s", name_x);
+                printf("\nDigite o nome do usuario y:");
+                scanf("%s", name_y);
+                follow_user(graph, name_x, name_y);
+                printf("\n%s segue %s agora\n", name_x, name_y);
+                break;
             case 3:
                 printf("\n\n");
-            print_insta_graph(graph);
-            printf("\n\n");
-            break;
+                print_insta_graph(graph);
+                printf("\n\n");
+                break;
             case 4:
                 flag = false;
-            break;
+                break;
             default:
                 printf("\n\nOpcao invalida!\n\n");
-            break;
+                break;
         }
     } while (flag);
     return graph;
 }
 
 /* Programa Principal */
-int main52() {
+int main() {
     InstaGraph* graph = build_insta_graph();
 
     int ext;

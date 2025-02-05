@@ -1,16 +1,18 @@
 #include <string.h>
 #include <math.h>
-#include "../libraries/headers/Stack.h"
-#include "../libraries/headers/Queue.h"
-#include "../libraries/headers/BinaryTree.h"
+#include "../libs/Stack/Stack.h"
+#include "../libs/Queue/Queue.h"
+#include "../libs/BinaryTree/BinaryTree.h"
 
 /* ------------------------------- LISTA 2 ---------------------------------- */
 
-/* 1) Implemente um programa em C que leia uma árvore A e responda se A é:
+/*
+ * 1) Implemente um programa em C que leia uma árvore A e responda se A é:
  * a) estritamente binária (possui 0 ou 2 filhos);
  * b) binária completa (diferença de nível entre as folhas é no máximo 1) ;
  * c) zigue-zague (todos os nós internos possuem exatamente um filho vazio);
- * d) imprima todas as folhas de uma árvore. */
+ * d) imprima todas as folhas de uma árvore.
+ */
 
 bool estritamente_binaria(TreeNode* root) {
     if (root == NULL)
@@ -62,8 +64,10 @@ void imprime_folhas(TreeNode* root) {
     }
 }
 
-/* 2) Dada uma árvore binária A, construa um programa (não recursivo) que faça
- * uma busca em profundidade utilizando pilhas. */
+/*
+ * 2) Dada uma árvore binária A, construa um programa (não recursivo) que
+ * faça uma busca em profundidade utilizando pilhas.
+ */
 
 void busca_profundidade_com_pilha(TreeNode* root) {
     int x;
@@ -88,8 +92,10 @@ void busca_profundidade_com_pilha(TreeNode* root) {
     free_stack(stack);
 }
 
-/* 3) Dada uma árvore binária A, construa um programa (não recursivo) que faça
- * uma busca em largura utilizando filas. */
+/*
+ * 3) Dada uma árvore binária A, construa um programa (não recursivo) que
+ * faça uma busca em largura utilizando filas.
+ */
 
 void busca_largura_com_fila(TreeNode* root) {
     int x;
@@ -115,8 +121,10 @@ void busca_largura_com_fila(TreeNode* root) {
     free_queue(queue);
 }
 
-/* 4) Dada uma árvore binária A, construa um programa (não recursivo) que faça
- * uma busca em pós-ordem utilizando pilhas. */
+/*
+ * 4) Dada uma árvore binária A, construa um programa (não recursivo) que
+ * faça uma busca em pós-ordem utilizando pilhas.
+ */
 
 void busca_pos_ordem_com_pilha(TreeNode* root) {
     int x;
@@ -144,8 +152,10 @@ void busca_pos_ordem_com_pilha(TreeNode* root) {
     free_stack(stack);
 }
 
-/* 5) Faça um programa com busca em pós-ordem (recursivo) para apagar
- * todos os nós de uma árvore A dada. Refaça o algoritmo em pré-ordem. */
+/*
+ * 5) Faça um programa com busca em pós-ordem (recursivo) para apagar
+ * todos os nós de uma árvore A dada. Refaça o algoritmo em pré-ordem.
+ */
 
 void libera_em_pos_ordem(TreeNode* root) {
     if (root != NULL) {
@@ -165,7 +175,9 @@ void libera_em_pre_ordem(TreeNode* root) {
     }
 }
 
-/* 6) Escreva uma função que determine se uma árvore binária é cheia ou não. */
+/*
+ * 6) Escreva uma função que determine se uma árvore binária é cheia ou não.
+ */
 
 bool binaria_cheia(TreeNode* root) {
     if (root == NULL)
@@ -180,8 +192,10 @@ bool binaria_cheia(TreeNode* root) {
     return false;
 }
 
-/* 7) Escreva uma função que cria uma imagem espelho de uma árvore binária,
- * isto é, todos os filhos à esquerda tornam-se filhos à direita, e vice-versa. */
+/*
+ * 7) Escreva uma função que cria uma imagem espelho de uma árvore binária,
+ * isto é, todos os filhos à esquerda tornam-se filhos à direita, e vice-versa.
+ */
 
 TreeNode* espelho(TreeNode* root) {
     if (root == NULL)
@@ -196,7 +210,9 @@ TreeNode* espelho(TreeNode* root) {
     return root;
 }
 
-/* 8) Escreva uma função que retorna o maior nó de uma árvore binária. */
+/*
+ * 8) Escreva uma função que retorna o maior nó de uma árvore binária.
+ */
 
 TreeNode* maior_no(TreeNode* root) {
     if (root == NULL)
@@ -215,7 +231,9 @@ TreeNode* maior_no(TreeNode* root) {
     return maior;
 }
 
-/* 9) Escreva uma função que retire os nós pares de uma árvore binária. */
+/*
+ * 9) Escreva uma função que retire os nós pares de uma árvore binária.
+ */
 
 TreeNode* retira_pares(TreeNode* root) {
     // Caso Base: árvore vazia
@@ -309,7 +327,7 @@ TreeNode* build_tree() {
 }
 
 /* Programa Principal */
-int main2(){
+int main(){
     TreeNode* tree = build_tree();
 
     printf("\n");
