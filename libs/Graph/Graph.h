@@ -4,15 +4,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct neighbor_node {
+typedef struct neighborNode {
     int id;
-    struct neighbor_node* next;
+    struct neighborNode* next;
 } NeighborNode;
 
-typedef struct graph_node {
+typedef struct graphNode {
     int id;
     NeighborNode* neighbors;
-    struct graph_node* next;
+    struct graphNode* next;
 } GraphNode;
 
 GraphNode* init_graph();

@@ -5,20 +5,22 @@ project(DataStructures C)
 set(LIBS_DIR ${CMAKE_SOURCE_DIR}/libs)
 
 # Adiciona bibliotecas
-add_library(BinarySearchTree ${LIBS_DIR}/BinarySearchTree/BinarySearchTree.c ${LIBS_DIR}/BinarySearchTree/BinarySearchTree.h)
-add_library(BinaryTree ${LIBS_DIR}/BinaryTree/BinaryTree.c ${LIBS_DIR}/BinaryTree/BinaryTree.h)
-add_library(Graph ${LIBS_DIR}/Graph/Graph.c ${LIBS_DIR}/Graph/Graph.h)
 add_library(LinkedList ${LIBS_DIR}/LinkedList/LinkedList.c ${LIBS_DIR}/LinkedList/LinkedList.h)
 add_library(Queue ${LIBS_DIR}/Queue/Queue.c ${LIBS_DIR}/Queue/Queue.h)
 add_library(Stack ${LIBS_DIR}/Stack/Stack.c ${LIBS_DIR}/Stack/Stack.h)
+add_library(BinaryTree ${LIBS_DIR}/BinaryTree/BinaryTree.c ${LIBS_DIR}/BinaryTree/BinaryTree.h)
+add_library(BinarySearchTree ${LIBS_DIR}/BinarySearchTree/BinarySearchTree.c ${LIBS_DIR}/BinarySearchTree/BinarySearchTree.h)
+add_library(BTree ${LIBS_DIR}/BTree/BTree.c ${LIBS_DIR}/BTree/BTree.h)
+add_library(Graph ${LIBS_DIR}/Graph/Graph.c ${LIBS_DIR}/Graph/Graph.h)
 
 # Inclui diretórios de cabeçalhos
-include_directories(${LIBS_DIR}/BinarySearchTree)
-include_directories(${LIBS_DIR}/BinaryTree)
-include_directories(${LIBS_DIR}/Graph)
 include_directories(${LIBS_DIR}/LinkedList)
 include_directories(${LIBS_DIR}/Queue)
 include_directories(${LIBS_DIR}/Stack)
+include_directories(${LIBS_DIR}/BinaryTree)
+include_directories(${LIBS_DIR}/BinarySearchTree)
+include_directories(${LIBS_DIR}/BTree)
+include_directories(${LIBS_DIR}/Graph)
 
 # Executáveis para listas
 add_executable(lista01 src/lista01.c)
